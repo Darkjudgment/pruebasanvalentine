@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Nuestra Historia 💖</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <span class="pill">💖 <span id="siteTitle">Nuestra Historia</span></span>
+        <span class="badge" id="miniDate">✨</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#historia">Historia</a>
+        <a href="#galeria">Galería</a>
+        <a href="#carta">Carta</a>
+        <a href="#contador">Tiempo Juntos</a>
+        <a href="#metas">Metas</a>
+        <a href="#sorpresa">Sorpresa</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 1️⃣ Portada romántica -->
+  <section class="hero" id="inicio">
+    <div class="container">
+      <div class="grid grid-2">
+        <div>
+          <div class="badge">💞</div>
+          <h1 class="h1">Para ti, con todo mi corazón.</h1>
+          <p class="p hero-sub">
+            <b class="hero-phrase">“Nuestra historia comenzó el…”</b><br/>
+            <span id="startDateLabel">14 de febrero de 2022</span>
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#historia">✨ Descubre nuestra historia</a>
+            <button class="btn ghost" id="toggleMusicBtn">🎵 Música: <small id="musicState">OFF</small></button>
+          </div>
+        </div>
+
+        <div class="card hero-card">
+          <div class="hero-media">
+            <!-- Reemplaza assets/hero.jpg por tu imagen -->
+            <img id="heroImg" src="assets/hero.jpg" alt="Foto principal de la pareja"
+                 onerror="this.src='https://picsum.photos/1200/900?random=8'">
+            <div class="hero-overlay">
+              <div><div class="badge">📸My Foto Favorita</div></div>
+              <div class="p" id="heroQuote">“Porque contigo, hasta los días comunes se vuelven inolvidables.”</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 2️⃣ Nuestra historia -->
+  <section id="historia">
+    <div class="container">
+      <div class="grid grid-3">
+
+        <div class="card timeline-wrap">
+          <div class="timeline-header">
+            <div>
+              <div class="badge">🕰️ Nuestra historia</div>
+              <h2 class="h2">Timeline interactivo</h2>
+              <p class="p">Haz clic en un momento para ver la anécdota completa.</p>
+            </div>
+            <button class="btn" id="expandAllBtn">📖 Expandir todo</button>
+          </div>
+
+          <div class="timeline" id="timeline">
+            <!-- Items se pueden dejar aquí o generarse por JS -->
+            <div class="t-item">
+              <div class="t-top">
+                <div class="t-title">Cómo nos conocimos</div>
+                <div class="t-date">01/09/2021</div>
+              </div>
+              <div class="t-body">Un encuentro inesperado que cambió mis días para siempre…</div>
+              <div class="t-more">Desde el primer “hola” sentí calma. No fue perfecto, fue real. Y eso lo hizo mágico.</div>
+            </div>
+
+            <div class="t-item">
+              <div class="t-top">
+                <div class="t-title">Nuestra primera cita</div>
+                <div class="t-date">15/10/2021</div>
+              </div>
+              <div class="t-body">Ese día entendí que la felicidad podía tener nombre.</div>
+              <div class="t-more">Nos reímos tanto que se me olvidó el mundo. Volví a casa pensando: “quiero más de esto”.</div>
+            </div>
+
+            <div class="t-item">
+              <div class="t-top">
+                <div class="t-title">Momentos importantes</div>
+                <div class="t-date">2022</div>
+              </div>
+              <div class="t-body">Pequeños logros, grandes abrazos.</div>
+              <div class="t-more">Cada meta que alcanzamos juntos fue una promesa silenciosa: seguir eligiéndonos.</div>
+            </div>
+          </div>
+        </div>
+
+       
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 3️⃣ Galería de recuerdos -->
+  <section id="galeria">
+    <div class="container">
+      <div class="card gallery">
+        <div class="gallery-top">
+          <div>
+            <div class="badge">🖼️ Galería de recuerdos</div>
+            <h2 class="h2">Cada Momento a Tu Lado es inolvidable</h2>
+          </div>
+
+          <div class="player">
+            <button class="btn" id="prevBtn">⬅️ Anterior</button>
+            <button class="btn" id="playBtn">⏯️ Pausar</button>
+            <button class="btn" id="nextBtn">Siguiente ➡️</button>
+          </div>
+        </div>
+
+    
+        <div class="slider" id="slider">
+          <div class="slider-controls">
+            <div class="dots" id="dots"></div>
+            <div class="badge" id="slideCounter">1 / 1</div>
+          </div>
+        </div>
+
+        <audio id="bgMusic" loop preload="auto"></audio>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4️⃣ Carta de amor -->
+  <section id="carta">
+    <div class="container">
+      <div class="card letter">
+        <div class="badge">💌 Carta de amor</div>
+        <h2 class="h2">Una carta que se abre</h2>
+        <div class="letter-grid">
+          <div class="envelope" id="envelope">
+            <div class="env-top">
+              <span class="badge">📬 Para ti</span>
+              <button class="btn primary" id="toggleLetterBtn">Ver / Ocultar</button>
+            </div>
+            <div class="env-body p">“Hay cosas que no caben en un mensaje… por eso te escribí esto.”</div>
+
+            <div class="paper" aria-label="Carta">
+              <h3 id="letterTitle">Mi amor,</h3>
+              <div id="letterText"></div>
+              <div class="signature">
+                <span class="sig-date" id="sigDate">Febrero 2026</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card letter-side">
+            <h3 class="h3">Firma digital</h3>
+            <span id="sigName">Tu persona 💖</span>
+            <div class="spacer"></div>
+            <p class="p">“¿Quieres seguir escribiendo esta historia conmigo?”</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 5️⃣ Contador especial -->
+  <section id="contador">
+    <div class="container">
+      <div class="card counter">
+        <div class="badge">⏳ Contador especial</div>
+        <h2 class="h2">“Juntos desde hace:”</h2>
+        <div class="counter-box">
+          <div class="metric">
+            <div class="lbl">Días</div>
+            <div class="num" id="days">0</div>
+            <div class="lbl">momentos que cuentan</div>
+          </div>
+          <div class="metric">
+            <div class="lbl">Meses</div>
+            <div class="num" id="months">0</div>
+            <div class="lbl">de elegirnos</div>
+          </div>
+          <div class="metric">
+            <div class="lbl">Años</div>
+            <div class="num" id="years">0</div>
+            <div class="lbl">de amor verdadero</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6️⃣ Promesas / Metas -->
+  <section id="metas">
+    <div class="container">
+      <div class="card promises">
+        <div class="badge">🌙 Promesas / Metas juntos</div>
+        <h2 class="h2">Lo que soñamos construir</h2>
+        <p class="p">Puedes dejarlo visual o marcarlo como “logrado”.</p>
+
+        <div class="tabs" id="tabs"></div>
+        <div class="promise-list" id="promiseList"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7️⃣ Sorpresa final -->
+  <section id="sorpresa">
+    <div class="container">
+      <div class="card surprise">
+        <div class="badge">🎁 Sorpresa final</div>
+        <h2 class="h2">Un mensaje que se desbloquea</h2>
+        <p class="p">Escribe el código secreto para revelar la sorpresa.</p>
+
+        <div class="lock">
+          <input type="password" id="secretInput" placeholder="Código secreto… (ej: TEAMO)" />
+          <button class="btn primary" id="unlockBtn">🔓 Desbloquear</button>
+          <span class="badge" id="unlockHint">Pista: <span id="hintText">nuestra palabra</span></span>
+        </div>
+
+        <div id="surpriseContent" class="hidden">
+          <div class="card surprise-inner">
+            <h3 class="h3">💖 Sorpresa</h3>
+            <p class="p" id="surpriseMessage"></p>
+
+            <div id="surpriseVideoWrap" class="hidden">
+              <video id="surpriseVideo" controls></video>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="container footer">
+    PARA LA MÁS HERMOSA EN ESTE MUNDO 💖
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

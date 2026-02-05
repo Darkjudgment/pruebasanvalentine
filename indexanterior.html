@@ -1,0 +1,1074 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Nuestra Historia 💖</title>
+  <style>
+    :root{
+      --bg: #0b0b10;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.10);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.68);
+      --stroke: rgba(255,255,255,.12);
+      --accent: #ff5fa2;
+      --accent2: #7c5cff;
+      --shadow: 0 18px 50px rgba(0,0,0,.45);
+      --radius: 18px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 20% 10%, rgba(255,95,162,.20), transparent 60%),
+        radial-gradient(900px 600px at 80% 20%, rgba(124,92,255,.18), transparent 55%),
+        radial-gradient(800px 600px at 40% 100%, rgba(255,255,255,.07), transparent 60%),
+        var(--bg);
+      overflow-x:hidden;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    .container{ width:min(1100px, 92vw); margin:0 auto; }
+
+    /* Top nav */
+    .nav{
+      position:sticky; top:0; z-index:20;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(to bottom, rgba(11,11,16,.85), rgba(11,11,16,.35));
+      border-bottom: 1px solid var(--stroke);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:12px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:700; letter-spacing:.2px;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 12px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.05);
+      border-radius:999px;
+    }
+    .nav-links{
+      display:flex; flex-wrap:wrap; gap:8px;
+      justify-content:flex-end;
+    }
+    .nav-links a{
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid transparent;
+      color:var(--muted);
+    }
+    .nav-links a:hover{
+      border-color: var(--stroke);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+    }
+
+    /* Buttons */
+    .btn{
+      cursor:pointer;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      border-radius: 999px;
+      padding:12px 16px;
+      font-weight:650;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      display:inline-flex; align-items:center; gap:10px;
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.18); }
+    .btn.primary{
+      border-color: rgba(255,95,162,.45);
+      background: linear-gradient(135deg, rgba(255,95,162,.25), rgba(124,92,255,.18));
+    }
+    .btn.ghost{
+      background: transparent;
+    }
+    .btn small{ opacity:.8; font-weight:600; }
+
+    /* Sections */
+    section{ padding:56px 0; }
+    .card{
+      border:1px solid var(--stroke);
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .grid{ display:grid; gap:18px; }
+    .grid-2{ grid-template-columns: 1.05fr .95fr; }
+    @media (max-width: 900px){
+      .grid-2{ grid-template-columns: 1fr; }
+    }
+
+    .h1{
+      font-size: clamp(32px, 3.8vw, 56px);
+      line-height:1.05;
+      margin:0 0 10px;
+      letter-spacing:-.6px;
+    }
+    .h2{
+      font-size: clamp(22px, 2.4vw, 32px);
+      margin:0 0 8px;
+      letter-spacing:-.35px;
+    }
+    .p{
+      margin:0;
+      color: var(--muted);
+      line-height:1.6;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px;
+      border:1px solid var(--stroke);
+      border-radius: 999px;
+      background: rgba(255,255,255,.05);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Hero */
+    .hero{
+      padding: 40px 0 26px;
+    }
+    .hero-card{
+      overflow:hidden;
+      position:relative;
+    }
+    .hero-media{
+      position:relative;
+      min-height: 430px;
+      border-radius: calc(var(--radius) + 8px);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.04);
+    }
+    .hero-media img{
+      width:100%; height:100%;
+      object-fit: cover;
+      display:block;
+      filter: saturate(1.03) contrast(1.02);
+      transform: scale(1.02);
+    }
+    .hero-overlay{
+      position:absolute; inset:0;
+      background:
+        linear-gradient(to top, rgba(11,11,16,.88), rgba(11,11,16,.15) 55%, rgba(11,11,16,.08));
+      display:flex; flex-direction:column; justify-content:flex-end;
+      padding: 22px;
+      gap:14px;
+    }
+    .hero-actions{
+      display:flex; flex-wrap:wrap; gap:10px;
+      align-items:center;
+    }
+
+    /* Timeline */
+    .timeline-wrap{ padding:18px; }
+    .timeline-header{
+      display:flex; flex-wrap:wrap; gap:10px;
+      align-items:center; justify-content:space-between;
+      margin-bottom: 12px;
+    }
+    .timeline{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .t-item{
+      padding:14px;
+      border:1px solid var(--stroke);
+      border-radius: 14px;
+      background: rgba(255,255,255,.05);
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+    }
+    .t-item:hover{ transform: translateY(-1px); background: rgba(255,255,255,.075); border-color: rgba(255,255,255,.20); }
+    .t-top{
+      display:flex; gap:10px; align-items:baseline; justify-content:space-between;
+    }
+    .t-title{ font-weight:760; }
+    .t-date{ color:var(--muted); font-size: 13px; }
+    .t-body{ margin-top:8px; color:var(--muted); line-height:1.55; }
+    .t-more{
+      margin-top:10px;
+      display:none;
+      color: rgba(255,255,255,.84);
+      line-height:1.55;
+    }
+    .t-item.open .t-more{ display:block; }
+
+    /* Gallery */
+    .gallery{
+      padding:18px;
+    }
+    .gallery-top{
+      display:flex; flex-wrap:wrap; gap:10px;
+      align-items:center; justify-content:space-between;
+      margin-bottom:12px;
+    }
+    .player{
+      display:flex; gap:8px; flex-wrap:wrap; align-items:center;
+    }
+    .music{
+      display:flex; gap:8px; align-items:center;
+      padding:10px 12px;
+      border:1px solid var(--stroke);
+      border-radius:999px;
+      background: rgba(255,255,255,.05);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .slider{
+      border-radius: 16px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      position:relative;
+      height: 420px;
+    }
+    .slide{
+      position:absolute; inset:0;
+      opacity:0; transition: opacity .55s ease;
+      display:flex; align-items:center; justify-content:center;
+      padding: 0;
+    }
+    .slide.active{ opacity:1; }
+    .slide img, .slide video{
+      width:100%; height:100%;
+      object-fit: cover;
+      display:block;
+    }
+    .slider-controls{
+      position:absolute; left:14px; right:14px; bottom:14px;
+      display:flex; justify-content:space-between; align-items:center;
+      gap:10px;
+    }
+    .dots{ display:flex; gap:6px; align-items:center; flex-wrap:wrap; }
+    .dot{
+      width:10px; height:10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.28);
+      background: rgba(255,255,255,.10);
+      cursor:pointer;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+    }
+    .dot.active{ background: rgba(255,95,162,.55); border-color: rgba(255,95,162,.85); transform: scale(1.06); }
+
+    /* Love letter */
+    .letter{
+      padding:18px;
+    }
+    .letter-grid{
+      display:grid; gap:14px;
+      grid-template-columns: 1fr 1fr;
+      align-items:start;
+    }
+    @media (max-width: 900px){
+      .letter-grid{ grid-template-columns: 1fr; }
+    }
+
+    .envelope{
+      position:relative;
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      overflow:hidden;
+      min-height: 360px;
+    }
+    .env-top{
+      padding: 16px 16px 0;
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+    }
+    .env-body{
+      padding: 16px;
+    }
+    .paper{
+      position:absolute;
+      left: 12px; right: 12px; bottom: 12px;
+      height: calc(100% - 60px);
+      border-radius: 16px;
+      background: rgba(255,255,255,.92);
+      color: #12121a;
+      padding: 18px 18px 70px;
+      transform: translateY(62%);
+      transition: transform .6s ease;
+      box-shadow: 0 18px 60px rgba(0,0,0,.35);
+      overflow:auto;
+    }
+    .envelope.open .paper{ transform: translateY(0%); }
+    .paper h3{ margin:0 0 10px; font-size: 20px; }
+    .paper p{ margin:0 0 10px; line-height:1.7; }
+    .signature{
+      position:absolute; left: 18px; right: 18px; bottom: 14px;
+      border-top: 1px solid rgba(0,0,0,.12);
+      padding-top: 10px;
+      display:flex; justify-content:space-between; gap:10px; align-items:flex-end;
+      font-family: "Brush Script MT", "Segoe Script", cursive;
+      font-size: 22px;
+    }
+    .sig-date{
+      font-family: ui-sans-serif, system-ui;
+      font-size: 12px;
+      color: rgba(0,0,0,.55);
+    }
+
+    /* Counter */
+    .counter{
+      padding:18px;
+    }
+    .counter-box{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 12px;
+    }
+    @media (max-width: 700px){
+      .counter-box{ grid-template-columns: 1fr; }
+    }
+    .metric{
+      padding:14px;
+      border:1px solid var(--stroke);
+      border-radius: 16px;
+      background: rgba(255,255,255,.05);
+    }
+    .metric .num{
+      font-size: 34px;
+      font-weight: 820;
+      letter-spacing:-.6px;
+      margin: 4px 0 2px;
+    }
+    .metric .lbl{ color: var(--muted); }
+
+    /* Promises */
+    .promises{ padding:18px; }
+    .tabs{
+      display:flex; gap:8px; flex-wrap:wrap;
+      margin: 12px 0 8px;
+    }
+    .tab{
+      cursor:pointer;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.05);
+      color: var(--muted);
+      font-weight:650;
+    }
+    .tab.active{
+      color: var(--text);
+      border-color: rgba(255,95,162,.40);
+      background: rgba(255,95,162,.12);
+    }
+    .promise-list{
+      display:grid; gap:10px;
+      margin-top:10px;
+    }
+    .promise{
+      padding:14px;
+      border:1px solid var(--stroke);
+      border-radius: 16px;
+      background: rgba(255,255,255,.05);
+      display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
+    }
+    .promise b{ display:block; margin-bottom:4px; }
+    .promise small{ color: var(--muted); line-height:1.5; display:block; }
+    .check{
+      width:18px; height:18px; border-radius:6px;
+      border:1px solid rgba(255,255,255,.24);
+      background: rgba(255,255,255,.06);
+      flex: 0 0 auto;
+      margin-top:2px;
+    }
+    .promise.done .check{
+      background: rgba(255,95,162,.55);
+      border-color: rgba(255,95,162,.85);
+    }
+
+    /* Surprise */
+    .surprise{ padding:18px; }
+    .lock{
+      display:flex; flex-wrap:wrap;
+      gap:10px; align-items:center;
+      margin-top: 12px;
+    }
+    input[type="password"], input[type="text"]{
+      padding:12px 14px;
+      border-radius: 12px;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      outline:none;
+      min-width: 240px;
+    }
+    input::placeholder{ color: rgba(255,255,255,.45); }
+
+    .hidden{ display:none !important; }
+
+    footer{
+      padding: 24px 0 44px;
+      color: rgba(255,255,255,.55);
+      text-align:center;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <span class="pill">💖 <span id="siteTitle">Nuestra Historia</span></span>
+        <span class="badge" id="miniDate">✨</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#historia">Historia</a>
+        <a href="#galeria">Galería</a>
+        <a href="#carta">Carta</a>
+        <a href="#contador">Contador</a>
+        <a href="#metas">Metas</a>
+        <a href="#sorpresa">Sorpresa</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 1) Portada romántica -->
+  <section class="hero" id="inicio">
+    <div class="container">
+      <div class="grid grid-2">
+        <div>
+          <div class="badge">💞 Portada romántica</div>
+          <h1 class="h1">Para ti, con todo mi corazón.</h1>
+          <p class="p" style="margin-bottom:16px;">
+            <b style="color:rgba(255,255,255,.88)">“Nuestra historia comenzó el…”</b><br/>
+            <span id="startDateLabel">14 de febrero de 2022</span>
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#historia">✨ Descubre nuestra historia</a>
+            <button class="btn ghost" id="toggleMusicBtn">🎵 Música: <small id="musicState">OFF</small></button>
+          </div>
+          <p class="p" style="margin-top:14px;">
+            Personaliza: cambia foto, fecha, textos y agrega tus recuerdos abajo.
+          </p>
+        </div>
+
+        <div class="card hero-card" style="padding:14px;">
+          <div class="hero-media">
+            <!-- FOTO PRINCIPAL: reemplaza hero.jpg por tu imagen -->
+            <img id="heroImg" src="hero.jpg" alt="Foto principal de la pareja" onerror="this.src='https://picsum.photos/1200/900?random=8'">
+            <div class="hero-overlay">
+              <div>
+                <div class="badge">📸 Foto principal</div>
+              </div>
+              <div class="p">
+                “Porque contigo, hasta los días comunes se vuelven inolvidables.”
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2) Nuestra historia - Timeline interactivo -->
+  <section id="historia">
+    <div class="container">
+      <div class="grid grid-2">
+        <div class="card timeline-wrap">
+          <div class="timeline-header">
+            <div>
+              <div class="badge">🕰️ Nuestra historia</div>
+              <h2 class="h2" style="margin-top:10px;">Timeline interactivo</h2>
+              <p class="p">Haz clic en un momento para ver la anécdota completa.</p>
+            </div>
+            <button class="btn" id="expandAllBtn">📖 Expandir todo</button>
+          </div>
+
+          <div class="timeline" id="timeline">
+            <!-- Edita / agrega momentos aquí (también puedes hacerlo en JS abajo) -->
+            <div class="t-item">
+              <div class="t-top">
+                <div class="t-title">Cómo nos conocimos</div>
+                <div class="t-date">01/09/2021</div>
+              </div>
+              <div class="t-body">Un encuentro inesperado que cambió mis días para siempre…</div>
+              <div class="t-more">Desde el primer “hola” sentí calma. No fue perfecto, fue real. Y eso lo hizo mágico.</div>
+            </div>
+
+            <div class="t-item">
+              <div class="t-top">
+                <div class="t-title">Nuestra primera cita</div>
+                <div class="t-date">15/10/2021</div>
+              </div>
+              <div class="t-body">Ese día entendí que la felicidad podía tener nombre.</div>
+              <div class="t-more">Nos reímos tanto que se me olvidó el mundo. Volví a casa pensando: “quiero más de esto”.</div>
+            </div>
+
+            <div class="t-item">
+              <div class="t-top">
+                <div class="t-title">Momentos importantes</div>
+                <div class="t-date">2022</div>
+              </div>
+              <div class="t-body">Pequeños logros, grandes abrazos.</div>
+              <div class="t-more">Cada meta que alcanzamos juntos fue una promesa silenciosa: seguir eligiéndonos.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="padding:18px;">
+          <div class="badge">💬 Tips rápidos</div>
+          <h2 class="h2" style="margin-top:10px;">Cómo personalizar</h2>
+          <p class="p">
+            1) Cambia <b>hero.jpg</b> por tu foto (mismo nombre) o edita el <b>src</b>.<br/>
+            2) Cambia la fecha “Juntos desde” en el JS: <b>CONFIG.startDate</b>.<br/>
+            3) Agrega fotos/videos en la galería en el arreglo <b>CONFIG.gallery</b>.<br/>
+            4) Escribe tu carta en <b>CONFIG.letter</b> y tu firma en <b>CONFIG.signature</b>.<br/>
+            5) Configura la sorpresa (código + mensaje o video).
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3) Galería de recuerdos -->
+  <section id="galeria">
+    <div class="container">
+      <div class="card gallery">
+        <div class="gallery-top">
+          <div>
+            <div class="badge">🖼️ Galería de recuerdos</div>
+            <h2 class="h2" style="margin-top:10px;">Fotos + videos + slideshow</h2>
+            <p class="p">Slideshow automático (puedes pausar y cambiar).</p>
+          </div>
+
+          <div class="player">
+            <button class="btn" id="prevBtn">⬅️ Anterior</button>
+            <button class="btn" id="playBtn">⏯️ Pausar</button>
+            <button class="btn" id="nextBtn">Siguiente ➡️</button>
+          </div>
+        </div>
+
+        <div class="music">
+          🎵 Música de fondo opcional:
+          <span id="musicLabel">Selecciona un archivo o pon un enlace local</span>
+        </div>
+
+        <div class="slider" id="slider">
+          <!-- slides se generan con JS -->
+          <div class="slider-controls">
+            <div class="dots" id="dots"></div>
+            <div class="badge" id="slideCounter">1 / 1</div>
+          </div>
+        </div>
+
+        <!-- Audio (opcional) -->
+        <audio id="bgMusic" loop preload="auto"></audio>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4) Carta de amor -->
+  <section id="carta">
+    <div class="container">
+      <div class="card letter">
+        <div class="badge">💌 Carta de amor</div>
+        <h2 class="h2" style="margin-top:10px;">Una carta que se abre</h2>
+        <p class="p">Toca el botón para abrir/cerrar la carta.</p>
+
+        <div class="letter-grid" style="margin-top:14px;">
+          <div class="envelope" id="envelope">
+            <div class="env-top">
+              <span class="badge">📬 Para ti</span>
+              <button class="btn primary" id="toggleLetterBtn">Abrir / Cerrar</button>
+            </div>
+            <div class="env-body p">
+              “Hay cosas que no caben en un mensaje… por eso te escribí esto.”
+            </div>
+
+            <div class="paper" aria-label="Carta">
+              <h3 id="letterTitle">Mi amor,</h3>
+              <div id="letterText"></div>
+              <div class="signature">
+                <span id="sigName">— Tu persona 💖</span>
+                <span class="sig-date" id="sigDate">Febrero 2026</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding:16px;">
+            <div class="badge">✍️ Personalizable</div>
+            <h3 style="margin:10px 0 6px;">Firma digital</h3>
+            <p class="p">
+              Cambia el nombre de la firma y el texto desde la configuración del JS.<br/>
+              Puedes escribir la carta en párrafos y se formatea sola.
+            </p>
+            <div style="height:12px"></div>
+            <div class="badge">💡 Idea</div>
+            <p class="p">
+              Agrega una frase final como “¿Quieres seguir escribiendo esta historia conmigo?”.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5) Contador especial -->
+  <section id="contador">
+    <div class="container">
+      <div class="card counter">
+        <div class="badge">⏳ Contador especial</div>
+        <h2 class="h2" style="margin-top:10px;">“Juntos desde hace:”</h2>
+        <p class="p">Se calcula automáticamente con la fecha de inicio.</p>
+
+        <div class="counter-box">
+          <div class="metric">
+            <div class="lbl">Días</div>
+            <div class="num" id="days">0</div>
+            <div class="lbl">momentos que cuentan</div>
+          </div>
+          <div class="metric">
+            <div class="lbl">Meses</div>
+            <div class="num" id="months">0</div>
+            <div class="lbl">de elegirnos</div>
+          </div>
+          <div class="metric">
+            <div class="lbl">Años</div>
+            <div class="num" id="years">0</div>
+            <div class="lbl">de amor verdadero</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6) Promesas / Metas juntos -->
+  <section id="metas">
+    <div class="container">
+      <div class="card promises">
+        <div class="badge">🌙 Promesas / Metas juntos</div>
+        <h2 class="h2" style="margin-top:10px;">Lo que soñamos construir</h2>
+        <p class="p">Puedes dejarlo visual o marcarlo como “logrado”.</p>
+
+        <div class="tabs" id="tabs"></div>
+        <div class="promise-list" id="promiseList"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7) Sorpresa final -->
+  <section id="sorpresa">
+    <div class="container">
+      <div class="card surprise">
+        <div class="badge">🎁 Sorpresa final</div>
+        <h2 class="h2" style="margin-top:10px;">Un mensaje que se desbloquea</h2>
+        <p class="p">Escribe el código secreto para revelar la sorpresa.</p>
+
+        <div class="lock">
+          <input type="password" id="secretInput" placeholder="Código secreto… (ej: TEAMO)" />
+          <button class="btn primary" id="unlockBtn">🔓 Desbloquear</button>
+          <span class="badge" id="unlockHint">Pista: <span id="hintText">nuestra palabra</span></span>
+        </div>
+
+        <div id="surpriseContent" class="hidden" style="margin-top:14px;">
+          <div class="card" style="padding:16px; background: rgba(255,255,255,.05); border-color: rgba(255,95,162,.30);">
+            <h3 style="margin:0 0 8px;">💖 Sorpresa</h3>
+            <p class="p" id="surpriseMessage"></p>
+
+            <!-- Opción: video oculto -->
+            <div id="surpriseVideoWrap" class="hidden" style="margin-top:12px;">
+              <video id="surpriseVideo" controls style="width:100%; border-radius:14px; border:1px solid rgba(255,255,255,.12);"></video>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="container">
+    Hecho con 💖 — personaliza todo a tu estilo.
+  </footer>
+
+  <script>
+    /* =========================
+       CONFIGURACIÓN PRINCIPAL
+       ========================= */
+    const CONFIG = {
+      siteTitle: "Nuestra Historia",
+      startDate: "2022-02-14", // YYYY-MM-DD  <-- CAMBIA ESTA FECHA (Juntos desde)
+      startDateLabel: "14 de febrero de 2022",
+
+      heroQuote: "Porque contigo, hasta los días comunes se vuelven inolvidables.",
+
+      // Música opcional:
+      // - Si tienes un archivo local, ponlo en la misma carpeta y usa: "music.mp3"
+      // - Si no, deja null.
+      musicSrc: null, // "music.mp3"
+
+      // Galería: fotos (type: "img") y videos (type: "video")
+      // Reemplaza URLs por tus archivos o enlaces.
+      gallery: [
+        { type:"img", src:"https://picsum.photos/1200/900?random=11", label:"Recuerdo 1" },
+        { type:"img", src:"https://picsum.photos/1200/900?random=12", label:"Recuerdo 2" },
+        { type:"video", src:"https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4", label:"Video 1" },
+        { type:"img", src:"https://picsum.photos/1200/900?random=13", label:"Recuerdo 3" }
+      ],
+      slideshowIntervalMs: 4500,
+
+      // Carta de amor
+      letterTitle: "Mi amor,",
+      letter: [
+        "Hoy quería regalarte algo distinto: un pedacito de nuestra historia guardado en un lugar que siempre puedas abrir.",
+        "Gracias por ser hogar, por ser calma, por ser aventura. Gracias por quedarte, incluso cuando el día pesa.",
+        "Te amo en lo simple: en las risas, en las miradas, en la forma en que el mundo se siente mejor cuando estás.",
+        "Si pudiera elegir de nuevo, volvería a encontrarte. Siempre."
+      ],
+      signature: "— Tu persona 💖",
+      signatureDate: "Febrero 2026",
+
+      // Promesas / metas
+      promiseCategories: [
+        {
+          name: "Viajar a… ✈️",
+          items: [
+            { title:"Viajar a la playa", note:"Atardecer, fotos y cero prisa.", done:false },
+            { title:"Conocer una ciudad nueva", note:"Perdernos y encontrarnos juntos.", done:false }
+          ]
+        },
+        {
+          name: "Lograr… 🏁",
+          items: [
+            { title:"Ahorrar para nuestro plan", note:"Un paso a la vez, pero juntos.", done:false },
+            { title:"Construir un proyecto en pareja", note:"Algo nuestro, con nuestra firma.", done:false }
+          ]
+        },
+        {
+          name: "Soñar con… 🌙",
+          items: [
+            { title:"Un hogar bonito", note:"Donde el amor se note en cada detalle.", done:false },
+            { title:"Muchos años más", note:"Elegirnos incluso en lo cotidiano.", done:false }
+          ]
+        }
+      ],
+
+      // Sorpresa final
+      secretCode: "TEAMO", // Cambia el código
+      secretHint: "nuestra palabra",
+      surpriseMessage: "Tengo un plan para nosotros: una cena especial este fin de semana. 💖 ¿Aceptas?",
+      // Si quieres video oculto, pon un archivo o URL:
+      surpriseVideoSrc: null // "sorpresa.mp4"
+    };
+
+    /* =========================
+       UTILIDADES
+       ========================= */
+    const $ = (s) => document.querySelector(s);
+    const $$ = (s) => document.querySelectorAll(s);
+
+    function formatESDate(date){
+      try{
+        return new Intl.DateTimeFormat("es-MX", { year:"numeric", month:"long", day:"numeric" }).format(date);
+      }catch(e){
+        return date.toISOString().slice(0,10);
+      }
+    }
+
+    /* =========================
+       INIT: HEADER / HERO
+       ========================= */
+    $("#siteTitle").textContent = CONFIG.siteTitle;
+    $("#startDateLabel").textContent = CONFIG.startDateLabel;
+    $("#miniDate").textContent = "Juntos desde " + CONFIG.startDateLabel;
+
+    /* =========================
+       TIMELINE (toggle open)
+       ========================= */
+    const timeline = $("#timeline");
+    timeline.addEventListener("click", (e) => {
+      const item = e.target.closest(".t-item");
+      if(!item) return;
+      item.classList.toggle("open");
+    });
+
+    let expandedAll = false;
+    $("#expandAllBtn").addEventListener("click", () => {
+      expandedAll = !expandedAll;
+      $$(".t-item").forEach(el => el.classList.toggle("open", expandedAll));
+      $("#expandAllBtn").textContent = expandedAll ? "📕 Contraer todo" : "📖 Expandir todo";
+    });
+
+    /* =========================
+       GALERÍA + SLIDESHOW
+       ========================= */
+    const slider = $("#slider");
+    const dots = $("#dots");
+    const slideCounter = $("#slideCounter");
+    let slideIndex = 0;
+    let playing = true;
+    let timer = null;
+
+    function buildSlides(){
+      // Limpia slides anteriores (dejando controls)
+      $$(".slide").forEach(n => n.remove());
+      dots.innerHTML = "";
+
+      CONFIG.gallery.forEach((g, i) => {
+        const s = document.createElement("div");
+        s.className = "slide" + (i===0 ? " active" : "");
+        if(g.type === "video"){
+          const v = document.createElement("video");
+          v.src = g.src;
+          v.preload = "metadata";
+          v.muted = true;
+          v.playsInline = true;
+          v.loop = true;
+          v.autoplay = i===0;
+          s.appendChild(v);
+        }else{
+          const img = document.createElement("img");
+          img.src = g.src;
+          img.alt = g.label || ("Recuerdo " + (i+1));
+          s.appendChild(img);
+        }
+        slider.insertBefore(s, slider.firstChild);
+
+        const d = document.createElement("div");
+        d.className = "dot" + (i===0 ? " active" : "");
+        d.title = g.label || ("Slide " + (i+1));
+        d.addEventListener("click", () => goToSlide(i, true));
+        dots.appendChild(d);
+      });
+
+      updateSlideCounter();
+    }
+
+    function updateSlideCounter(){
+      slideCounter.textContent = (slideIndex + 1) + " / " + CONFIG.gallery.length;
+      $$(".dot").forEach((d, i) => d.classList.toggle("active", i===slideIndex));
+      $$(".slide").forEach((s, i) => s.classList.toggle("active", i===slideIndex));
+      // Auto-play del video del slide activo (si aplica)
+      const active = $$(".slide")[slideIndex];
+      if(active){
+        const v = active.querySelector("video");
+        if(v){
+          v.currentTime = 0;
+          v.play().catch(()=>{});
+        }
+      }
+    }
+
+    function goToSlide(i, userAction=false){
+      slideIndex = (i + CONFIG.gallery.length) % CONFIG.gallery.length;
+      updateSlideCounter();
+      if(userAction) restartTimer();
+    }
+
+    function nextSlide(userAction=false){ goToSlide(slideIndex+1, userAction); }
+    function prevSlide(userAction=false){ goToSlide(slideIndex-1, userAction); }
+
+    function startTimer(){
+      stopTimer();
+      timer = setInterval(() => {
+        if(playing) nextSlide(false);
+      }, CONFIG.slideshowIntervalMs);
+    }
+    function stopTimer(){
+      if(timer) clearInterval(timer);
+      timer = null;
+    }
+    function restartTimer(){ startTimer(); }
+
+    $("#nextBtn").addEventListener("click", () => nextSlide(true));
+    $("#prevBtn").addEventListener("click", () => prevSlide(true));
+    $("#playBtn").addEventListener("click", () => {
+      playing = !playing;
+      $("#playBtn").textContent = playing ? "⏯️ Pausar" : "▶️ Reanudar";
+    });
+
+    buildSlides();
+    startTimer();
+
+    /* =========================
+       MÚSICA (opcional)
+       ========================= */
+    const bgMusic = $("#bgMusic");
+    const toggleMusicBtn = $("#toggleMusicBtn");
+    const musicState = $("#musicState");
+    let musicOn = false;
+
+    if(CONFIG.musicSrc){
+      bgMusic.src = CONFIG.musicSrc;
+      $("#musicLabel").textContent = "Lista (archivo: " + CONFIG.musicSrc + ")";
+    }else{
+      $("#musicLabel").textContent = "Sin música configurada (opcional).";
+    }
+
+    function setMusic(on){
+      musicOn = on;
+      musicState.textContent = musicOn ? "ON" : "OFF";
+      if(!CONFIG.musicSrc){
+        // No hay música configurada: solo cambia estado visual
+        return;
+      }
+      if(musicOn){
+        bgMusic.volume = 0.55;
+        bgMusic.play().catch(()=>{});
+      }else{
+        bgMusic.pause();
+      }
+    }
+
+    toggleMusicBtn.addEventListener("click", () => setMusic(!musicOn));
+
+    /* =========================
+       CARTA DE AMOR (animación)
+       ========================= */
+    $("#letterTitle").textContent = CONFIG.letterTitle;
+    $("#sigName").textContent = CONFIG.signature;
+    $("#sigDate").textContent = CONFIG.signatureDate;
+
+    const letterText = $("#letterText");
+    letterText.innerHTML = CONFIG.letter.map(p => `<p>${escapeHTML(p)}</p>`).join("");
+
+    const envelope = $("#envelope");
+    $("#toggleLetterBtn").addEventListener("click", () => {
+      envelope.classList.toggle("open");
+    });
+
+    function escapeHTML(str){
+      return String(str)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+    }
+
+    /* =========================
+       CONTADOR (años / meses / días)
+       ========================= */
+    const start = new Date(CONFIG.startDate + "T00:00:00");
+    $("#startDateLabel").textContent = CONFIG.startDateLabel || formatESDate(start);
+
+    function calcDiffYMD(from, to){
+      // calcula años/meses/días completos
+      let years = to.getFullYear() - from.getFullYear();
+      let months = to.getMonth() - from.getMonth();
+      let days = to.getDate() - from.getDate();
+
+      if(days < 0){
+        // tomar días del mes anterior
+        const prevMonth = new Date(to.getFullYear(), to.getMonth(), 0);
+        days += prevMonth.getDate();
+        months -= 1;
+      }
+      if(months < 0){
+        months += 12;
+        years -= 1;
+      }
+      return { years, months, days };
+    }
+
+    function updateCounter(){
+      const now = new Date();
+      const diff = calcDiffYMD(start, now);
+
+      // Total días
+      const ms = now.getTime() - start.getTime();
+      const totalDays = Math.floor(ms / (1000*60*60*24));
+
+      $("#years").textContent = Math.max(0, diff.years);
+      $("#months").textContent = Math.max(0, diff.years*12 + diff.months); // meses totales
+      $("#days").textContent = Math.max(0, totalDays);
+    }
+    updateCounter();
+    setInterval(updateCounter, 60_000);
+
+    /* =========================
+       PROMESAS / METAS (tabs)
+       ========================= */
+    const tabs = $("#tabs");
+    const promiseList = $("#promiseList");
+    let activeCat = 0;
+
+    function renderTabs(){
+      tabs.innerHTML = "";
+      CONFIG.promiseCategories.forEach((c, i) => {
+        const b = document.createElement("button");
+        b.className = "tab" + (i===activeCat ? " active" : "");
+        b.textContent = c.name;
+        b.addEventListener("click", () => {
+          activeCat = i;
+          renderTabs();
+          renderPromises();
+        });
+        tabs.appendChild(b);
+      });
+    }
+
+    function renderPromises(){
+      promiseList.innerHTML = "";
+      const cat = CONFIG.promiseCategories[activeCat];
+
+      cat.items.forEach((it, idx) => {
+        const row = document.createElement("div");
+        row.className = "promise" + (it.done ? " done" : "");
+        row.innerHTML = `
+          <div>
+            <b>${escapeHTML(it.title)}</b>
+            <small>${escapeHTML(it.note || "")}</small>
+          </div>
+          <div class="check" title="Marcar / desmarcar"></div>
+        `;
+        row.addEventListener("click", () => {
+          it.done = !it.done;
+          renderPromises();
+        });
+        promiseList.appendChild(row);
+      });
+    }
+
+    renderTabs();
+    renderPromises();
+
+    /* =========================
+       SORPRESA FINAL (unlock)
+       ========================= */
+    $("#hintText").textContent = CONFIG.secretHint;
+    $("#surpriseMessage").textContent = CONFIG.surpriseMessage;
+
+    if(CONFIG.surpriseVideoSrc){
+      $("#surpriseVideoWrap").classList.remove("hidden");
+      $("#surpriseVideo").src = CONFIG.surpriseVideoSrc;
+    }
+
+    function unlock(){
+      const val = $("#secretInput").value.trim();
+      const ok = val.toUpperCase() === String(CONFIG.secretCode).toUpperCase();
+      if(ok){
+        $("#surpriseContent").classList.remove("hidden");
+        $("#unlockHint").textContent = "✨ Desbloqueado";
+        $("#secretInput").value = "";
+        // Desplaza suavemente al contenido
+        $("#surpriseContent").scrollIntoView({ behavior:"smooth", block:"start" });
+      }else{
+        $("#unlockHint").textContent = "❌ Código incorrecto. Pista: " + CONFIG.secretHint;
+      }
+    }
+
+    $("#unlockBtn").addEventListener("click", unlock);
+    $("#secretInput").addEventListener("keydown", (e) => {
+      if(e.key === "Enter") unlock();
+    });
+
+  </script>
+</body>
+</html>
